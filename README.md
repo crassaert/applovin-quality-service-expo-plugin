@@ -1,4 +1,4 @@
-# applovin-quality-service-expo-plugin
+# @crassaert/applovin-quality-service-expo-plugin
 
 Add required packages to include AppLovin Quality Service/ Ad Review into an expo app.
 This feature is not available into the former react native package so I decided to share my code with you.
@@ -10,13 +10,13 @@ Prior to this plugin install, you need to have `react-native-applovin-max` npm p
 Then, you just have to install the plugin.
 
 ```sh
-npx expo install applovin-quality-service-expo-plugin
+npx expo install @crassaert/applovin-quality-service-expo-plugin
 
 # npm
-npm install applovin-quality-service-expo-plugin
+npm install @crassaert/applovin-quality-service-expo-plugin
 
 # yarn
-yarn add applovin-quality-service-expo-plugin
+yarn add @crassaert/applovin-quality-service-expo-plugin
 ```
 
 ## Configuration in app.json / app.config.js
@@ -28,7 +28,7 @@ Add the plugin to the **front** of the [plugin array](https://docs.expo.dev/vers
 {
   "plugins": [
     [
-      "applovin-quality-service-expo-plugin",
+      "@crassaert/applovin-quality-service-expo-plugin",
       {
         "apiKey": "myapikey"
       }
@@ -45,7 +45,7 @@ export default {
   ...
   plugins: [
     [
-      "applovin-quality-service-expo-plugin",
+      "@crassaert/applovin-quality-service-expo-plugin",
       {
         apikey: "myapikey",
       }
@@ -61,4 +61,4 @@ You can pass props to the plugin config object to configure:
 |--------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `apiKey`                 | **required** | Your API key available in your AppLovin dashboard  
 
-
+Feel free to contribute or open issues.
