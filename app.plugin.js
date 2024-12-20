@@ -1,3 +1,1 @@
-const {withAppLovinQualityService} = import('src/withAppLovinQualityService')
-
-module.exports = withAppLovinQualityService
+module.exports = require('./build/withAppLovinQualityService');

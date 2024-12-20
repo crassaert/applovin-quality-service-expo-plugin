@@ -1,7 +1,7 @@
 import {ConfigPlugin, withXcodeProject} from "@expo/config-plugins";
 import {PBXShellScriptBuildPhase} from "../types/types";
 
-export const withAppLovinQualityServiceIos: ConfigPlugin = (config) => {
+export const withApplovinQualityServiceIos: ConfigPlugin = (config) => {
     config = withXcodeProject(config, (config) => {
         const project = config.modResults;
         const scriptFileName = 'AppLovinQualityServiceSetup-ios.rb';
