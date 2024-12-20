@@ -1,3 +1,3 @@
-import {withAppLovinQualityService} from "./src/withAppLovinQualityService";
+const {withAppLovinQualityService} = import('src/withAppLovinQualityService')
 
-export default withAppLovinQualityService
+module.exports = withAppLovinQualityService

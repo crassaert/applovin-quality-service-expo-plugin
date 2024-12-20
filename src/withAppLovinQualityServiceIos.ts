@@ -1,4 +1,5 @@
 import {ConfigPlugin, withXcodeProject} from "@expo/config-plugins";
+import {PBXShellScriptBuildPhase} from "../types/types";
 
 export const withAppLovinQualityServiceIos: ConfigPlugin = (config) => {
     config = withXcodeProject(config, (config) => {
@@ -9,7 +10,7 @@ export const withAppLovinQualityServiceIos: ConfigPlugin = (config) => {
         const buildPhaseName = 'Run AppLovin Quality Service Setup Script';
 
         const buildPhaseExists = project.hash.project.objects.PBXShellScriptBuildPhase
-            ? Object.values(project.hash.project.objects.PBXShellScriptBuildPhase).some((phase: any) =>
+            ? Object.values(project.hash.project.objects.PBXShellScriptBuildPhase as PBXShellScriptBuildPhase[]).some((phase) =>
                 phase.name?.includes(buildPhaseName),
             )
             : false;

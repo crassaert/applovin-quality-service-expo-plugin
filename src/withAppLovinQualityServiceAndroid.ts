@@ -1,6 +1,5 @@
 import {ConfigPlugin, withAppBuildGradle, withProjectBuildGradle} from "@expo/config-plugins";
 
-
 export const withAppLovinQualityServiceAndroid: ConfigPlugin<{ apiKey: string }> = (config, {apiKey}) => {
     config = withProjectBuildGradle(config, (config) => {
         if (!config.modResults.contents.includes('https://artifacts.applovin.com/android')) {

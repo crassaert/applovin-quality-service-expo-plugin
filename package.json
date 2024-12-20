@@ -4,6 +4,8 @@
   "description": "Expo plugin to automate installation of required packages from AppLovin Quality Service",
   "main": "app.plugin.js",
   "scripts": {
+    "build": "yarn run lint && rm -rf build && tsc",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
