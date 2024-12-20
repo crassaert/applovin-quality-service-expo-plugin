@@ -1,0 +1,37 @@
+{
+  "name": "@crassaert/applovin-quality-service-expo-plugin",
+  "version": "1.0.0",
+  "description": "Expo plugin to automate installation of required packages from AppLovin Quality Service",
+  "main": "app.plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crassaert/applovin-quality-service-expo-plugin.git"
+  },
+  "keywords": [
+    "expo",
+    "applovin",
+    "expo-plugin",
+    "react-native"
+  ],
+  "author": "Cédric Rassaert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crassaert/applovin-quality-service-expo-plugin/issues"
+  },
+  "homepage": "https://github.com/crassaert/applovin-quality-service-expo-plugin#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "eslint": "^9.17.0",
+    "expo-module-scripts": "^4.0.2",
+    "globals": "^15.14.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^9.0.12"
+  }
+}
