@@ -5,7 +5,7 @@ export const withApplovinQualityServiceIos: ConfigPlugin = (config) => {
     config = withXcodeProject(config, (config) => {
         const project = config.modResults;
         const scriptFileName = 'AppLovinQualityServiceSetup-ios.rb';
-        const rubyScriptPath = `"${`$\{SRCROOT}/../scripts/${scriptFileName}`}"`;
+        const rubyScriptPath = `"${`$\{SRCROOT}/../node_modules/@crassaert/applovin-quality-service-expo-plugin/scripts/${scriptFileName}`}"`;
 
         const buildPhaseName = 'Run AppLovin Quality Service Setup Script';
 

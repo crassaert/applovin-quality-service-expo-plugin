@@ -1,6 +1,6 @@
 {
   "name": "@crassaert/applovin-quality-service-expo-plugin",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Expo plugin to automate installation of required packages from AppLovin Quality Service",
   "main": "app.plugin.js",
   "scripts": {
