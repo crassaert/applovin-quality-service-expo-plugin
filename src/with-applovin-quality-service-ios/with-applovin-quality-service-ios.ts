@@ -1,39 +1,48 @@
-import {ConfigPlugin, withXcodeProject} from "@expo/config-plugins";
-import {PBXShellScriptBuildPhase} from "../types/types";
+import { ConfigPlugin, withXcodeProject } from "@expo/config-plugins";
+import { spawnSync } from "child_process";
+import * as path from "node:path";
+import * as fs from "node:fs";
+
+const copyIosScript = (projectRoot: string) => {
+    const sourcePath = path.resolve(
+        __dirname,
+        "../../scripts/AppLovinQualityServiceSetup-ios.rb"
+    );
+    const destinationPath = path.join(projectRoot, "ios", "AppLovinQualityServiceSetup-ios.rb");
+
+    if (!fs.existsSync(sourcePath)) {
+        throw new Error(`Source file does not exist: ${sourcePath}`);
+    }
+
+    // Create the destination directory if it doesn't exist
+    if (!fs.existsSync(path.dirname(destinationPath))) {
+        fs.mkdirSync(path.dirname(destinationPath), { recursive: true });
+    }
+
+    // Copy the file
+    fs.copyFileSync(sourcePath, destinationPath);
+    console.log(`Copied ${sourcePath} to ${destinationPath}`);
+};
 
 export const withApplovinQualityServiceIos: ConfigPlugin = (config) => {
     config = withXcodeProject(config, (config) => {
-        const project = config.modResults;
-        const scriptFileName = 'AppLovinQualityServiceSetup-ios.rb';
-        const rubyScriptPath = `"${`$\{SRCROOT}/../node_modules/@crassaert/applovin-quality-service-expo-plugin/scripts/${scriptFileName}`}"`;
+        copyIosScript(config.modRequest.projectRoot);
 
-        const buildPhaseName = 'Run AppLovin Quality Service Setup Script';
+        const scriptPath = path.join(config.modRequest.projectRoot, "ios", "AppLovinQualityServiceSetup-ios.rb");
 
-        const buildPhaseExists = project.hash.project.objects.PBXShellScriptBuildPhase
-            ? Object.values(project.hash.project.objects.PBXShellScriptBuildPhase as PBXShellScriptBuildPhase[]).some((phase) =>
-                phase.name?.includes(buildPhaseName),
-            )
-            : false;
+        const result = spawnSync("ruby", [scriptPath], { encoding: "utf-8" });
 
-        if (!buildPhaseExists) {
-            const scriptPhase = project.addBuildPhase(
-                [],
-                'PBXShellScriptBuildPhase',
-                buildPhaseName,
-                null,
-                {
-                    shellPath: '"/bin/sh"',
-                    shellScript: `cp ${rubyScriptPath} ${scriptFileName} && ruby ${scriptFileName}`,
-                },
-            );
+        if (result.error) {
+            console.error("Failed to run AppLovin Quality Service script:", result.error.message);
+            throw result.error;
+        }
 
-            if (!scriptPhase) {
-                throw new Error(`Failed to add ${buildPhaseName} phase to Xcode project.`);
-            }
+        if (result.stderr) {
+            console.error("Error output:", result.stderr);
         }
 
         return config;
     });
 
     return config;
-}
+};
