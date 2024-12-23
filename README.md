@@ -63,10 +63,11 @@ To do it automatically, the best way is to add a script on your package.json, th
 
 ``` json title="package.json"
 {
-  scripts: {
-    ...
-    "eas-build-post-install": "[[ \"$EAS_BUILD_PLATFORM\" == \"ios\" ]] && ruby $EAS_BUILD_WORKINGDIR/ios/AppLovinQualityServiceSetup-ios.rb",
-    ...
+    scripts: {
+        ...
+        "eas-build-post-install": "[[ \"$EAS_BUILD_PLATFORM\" == \"ios\" ]] && ruby $EAS_BUILD_WORKINGDIR/ios/AppLovinQualityServiceSetup-ios.rb",
+        ...
+    }
 }
 ```
 
