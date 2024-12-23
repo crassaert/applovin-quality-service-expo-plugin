@@ -1,6 +1,7 @@
 
 export type withAppLovinQualityServiceParams = {
-    apiKey: string
+    apiKey: string,
+    iosSetupScriptPath: string
 }
 
 export type PBXShellScriptBuildPhase = {

@@ -30,7 +30,8 @@ Add the plugin to the **front** of the [plugin array](https://docs.expo.dev/vers
     [
       "@crassaert/applovin-quality-service-expo-plugin",
       {
-        "apiKey": "myapikey"
+        "apiKey": "myapikey",
+        "iosSetupScriptPath": "scripts/AppLovinQualityServiceSetup-ios.rb"
       }
     ]
   ]
@@ -48,17 +49,33 @@ export default {
       "@crassaert/applovin-quality-service-expo-plugin",
       {
         apikey: "myapikey",
+        iosSetupScriptPath: "scripts/AppLovinQualityServiceSetup-ios.rb"
       }
     ]
   ]
 };
 ```
 
+### iOS additionnal step
+In order to Ad Review work on iOS, you have to execute script between prebuild and build.
+
+To do it automatically, the best way is to add a script on your package.json, thanks to eas hook system :
+
+``` json title="package.json"
+{
+  scripts: {
+    ...
+    "eas-build-post-install": "[[ \"$EAS_BUILD_PLATFORM\" == \"ios\" ]] && ruby $EAS_BUILD_WORKINGDIR/ios/AppLovinQualityServiceSetup-ios.rb",
+    ...
+}
+```
+
 #### Plugin Prop
 You can pass props to the plugin config object to configure:
 
-| Plugin Prop              |          |                                                                                                                                                                                                                                                                                                                                                                                  |
-|--------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apiKey`                 | **required** | Your API key available in your AppLovin dashboard  
+| Plugin Prop          |              |                                                   |
+|----------------------|--------------|---------------------------------------------------|
+| `apiKey`             | **required** | Your API key available in your AppLovin dashboard |
+| `iosSetupScriptPath` | **required** | Your AppLovinQualityServiceSetup-ios.rb path      |
 
 Feel free to contribute or open issues.

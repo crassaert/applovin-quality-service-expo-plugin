@@ -30,7 +30,8 @@
       [
         "applovin-quality-service-expo-plugin",
         {
-          "apiKey": "foo"
+          "apiKey": "foo",
+          "iosSetupScriptPath": "scripts/AppLovinQualityServiceSetup-ios.rb"
         }
       ]
     ]
