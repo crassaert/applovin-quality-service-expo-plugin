@@ -55,7 +55,7 @@ export default {
   ]
 };
 ```
-
+    
 ### iOS additionnal step
 In order to Ad Review work on iOS, you have to execute script between prebuild and build.
 
@@ -65,7 +65,7 @@ To do it automatically, the best way is to add a script on your package.json, th
 {
     scripts: {
         ...
-        "eas-build-post-install": "[[ \"$EAS_BUILD_PLATFORM\" == \"ios\" ]] && ruby $EAS_BUILD_WORKINGDIR/ios/AppLovinQualityServiceSetup-ios.rb",
+        "eas-build-post-install": "[ \"$EAS_BUILD_PLATFORM\" = \"ios\" ] && ruby $EAS_BUILD_WORKINGDIR/ios/AppLovinQualityServiceSetup-ios.rb || true",
         ...
     }
 }
